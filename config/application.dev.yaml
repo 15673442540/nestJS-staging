@@ -1,0 +1,18 @@
+db:
+  mysql:
+    type: 'mysql'
+    host: 127.0.0.1
+    protw: 3306
+    username: root
+    password: example
+    database: test
+
+logs:
+  level: 'info'
+  on: false
+  timestamp : true
+
+jwt:
+#secret  jwt 生成加密的字段，随便写先
+  secret: '123456789' 
+    
