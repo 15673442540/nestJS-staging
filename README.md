@@ -16,7 +16,10 @@ npm i -g @nestjs/cli
 nest new project-name
 npm run  install
 npm run  start:dev
+
+推荐中文文档地址：https://static.kancloud.cn/juukee/nestjs/2666734
 ```
+
 
 ###目录结构
 src
