@@ -4,11 +4,13 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
+import { ConfigService } from '@nestjs/config';
+import { ConfigEnum } from '../enum/config.enum';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService,
-    @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger
-    
+    @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
+    private config:ConfigService
   ) { }
 
   @Post()
@@ -18,6 +20,9 @@ export class UserController {
 
   @Get()
   findAll() {
+    console.log(this.config.get(ConfigEnum.HOST, '9999'))
+    console.log(this.config.get(ConfigEnum.USERNAME, '张三'))
+    
     this.logger.log('info','手动log');
     return this.userService.findAll();
   }

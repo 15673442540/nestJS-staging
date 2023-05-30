@@ -3,5 +3,6 @@ export enum ConfigEnum {
     PORT = 'http.port',
     TIMESTAMP = 'logs.timestamp',
     LOG_LEVEL = 'logs.level',
-    LOG_ON = 'logs.on'
+    LOG_ON = 'logs.on',
+    USERNAME='db.mysql.username',
 }
