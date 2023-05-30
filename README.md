@@ -1,73 +1,56 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+###介绍
+Nest (NestJS) 是一个用于构建高效、可扩展的Node.js服务器端应用程序的框架。使用 TypeScript 构建并完全支持TypeScript，并结合了 OOP（面向对象编程）、FP（函数式编程）和 FRP（函数式反应式编程）的框架。内置了Express(默认)和Fastify等Node.js框架
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+###nestJs与koa，express的区别
+koa，express本身不带任何其他的库，如果需要使用路由、错误处理、认证等功能需要自己安装并引入，什么都需要自己DIY。而nestJs他是一个企业级框架，他的规范很多，提供了各种开箱即用的技术，如认证、数据库、路由、http状态码、安全、配置、请求等等
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+###安装
+要求：node.js version>10.x  
+我的版本是v16.13.0,建议大家大版本跟我一致，因为后面配置typeorm时，node版本不一致容易出问题
 
-```bash
-$ yarn install
+```javascript
+npm i -g @nestjs/cli
+nest new project-name
+npm run  install
+npm run  start:dev
 ```
 
-## Running the app
+###目录结构
+src
+ ├── app.controller.spec.ts   (测试文件)
+ ├── app.controller.ts   (控制器)
+ ├── app.module.ts   (应用程序的根模块)
+ ├── app.service.ts   (编写后端业务文件)
+ └── main.ts   (应用程序的入口文件)
 
-```bash
-# development
-$ yarn run start
 
-# watch mode
-$ yarn run start:dev
+###mian.js
+```javascript
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
 
-# production mode
-$ yarn run start:prod
+async function bootstrap() {
+  //创建一个 Nest 应用实例
+  const app = await NestFactory.create(AppModule);
+
+ //如果想使用其他的Http框架，有两个开箱即用的框架express 和 fastify。只需要传递类型给NestFactory.create() 函数
+ //const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  await app.listen(3000);
+}
+
+
+bootstrap();
 ```
 
-## Test
 
-```bash
-# unit tests
-$ yarn run test
 
-# e2e tests
-$ yarn run test:e2e
 
-# test coverage
-$ yarn run test:cov
-```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
 
-Nest is [MIT licensed](LICENSE).
