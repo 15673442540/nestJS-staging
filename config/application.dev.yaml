@@ -9,7 +9,7 @@ db:
 
 logs:
   level: 'info'
-  on: false
+  on: true
   timestamp : true
 
 jwt:

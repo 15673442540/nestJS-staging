@@ -1,8 +1,12 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import configuration from '../config/configuration';
 import { ConfigModule } from '@nestjs/config';
 import { LogsModule } from './logs/logs.module';
 import { UserModule } from './user/user.module';
+import { CatsModule } from './cats/cats.module';
+import { UserMiddleware } from './middleware/userMiddleware';
+import { APP_FILTER } from '@nestjs/core';
+import { HttpExceptionFilter } from './filters/HttpExceptionFilter';
 
 @Module({
   imports: [
@@ -14,7 +18,14 @@ import { UserModule } from './user/user.module';
     LogsModule,
     UserModule,
     ConfigModule,
+    CatsModule
   ],
   controllers: [],
 })
-export class AppModule {}
+
+export class AppModule  {
+
+
+
+
+}
